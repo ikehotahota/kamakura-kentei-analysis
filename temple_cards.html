@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>鎌倉検定3級｜主要寺社20</title>
+<style>
+:root{--ink:#22332c;--muted:#69756f;--paper:#fbf8f1;--line:#ddd5c8;--green:#3f6d59;--soft:#eaf2ed;--accent:#a55d43}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
+header{padding:46px 18px 28px;text-align:center;background:linear-gradient(135deg,#e3eee7,#f7eee3)}h1{font-size:clamp(30px,5vw,52px);line-height:1.22;margin:.2em 0}.lead{max-width:850px;margin:auto;color:var(--muted)}
+main{max-width:1180px;margin:auto;padding:20px 16px 80px}.nav,.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}.nav a,.filter-btn{border:1px solid var(--line);background:white;padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:800;font-size:.8rem;cursor:pointer}.filter-btn.active{background:var(--green);color:white}
+.note{background:#efe8dc;border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.84rem;margin:18px 0}.note strong{color:var(--ink)}
+#map{height:650px;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 14px 36px #22352c18;margin:16px 0 28px}.map-tools{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.map-tools input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;font-size:16px}.map-tools button{padding:10px 12px;border:1px solid var(--line);background:white;border-radius:11px;font-weight:800;cursor:pointer}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:.72rem;color:var(--muted);margin:10px 0}.legend span{display:flex;align-items:center;gap:5px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.area-section{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;margin:22px 0}.area-section h2{margin-top:0}.spot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.spot-card{border:1px solid var(--line);border-radius:14px;scroll-margin-top:15px}.spot-card>summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;justify-content:space-between;gap:10px;font-weight:900}.spot-card>summary::-webkit-details-marker{display:none}.spot-card>summary b{color:var(--accent)}.spot-body{border-top:1px solid var(--line);padding:12px 14px}.chips{display:flex;gap:5px;flex-wrap:wrap}.chip{font-size:.68rem;padding:4px 6px;border-radius:7px;background:#f1ede6}.quiz{border-top:1px dashed var(--line);padding:7px 0}.quiz summary{cursor:pointer;font-size:.8rem;font-weight:760}.quiz p{font-size:.8rem;margin:.35rem 0}.ans{font-weight:900;color:var(--green)}
+.popup-title{font-size:15px;font-weight:900;margin-bottom:3px}.popup-meta{font-size:12px;color:#63706a;margin-bottom:7px}.popup-btn{display:inline-block;padding:6px 9px;border-radius:8px;background:#3f6d59;color:white!important;text-decoration:none;font-size:12px;font-weight:800}
+.leaflet-popup-content{margin:12px 14px}
+@media(max-width:780px){#map{height:560px}.spot-grid{grid-template-columns:1fr}.map-tools{grid-template-columns:1fr}.map-tools button{width:100%}}
+@media(max-width:480px){#map{height:520px}main{padding-left:10px;padding-right:10px}}
+
+.region-index{margin:26px 0 30px}
+.region-index h2{text-align:center;margin-bottom:6px}
+.region-index p{text-align:center;color:var(--muted);margin-top:0}
+.region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.region-card{display:block;text-decoration:none;background:white;border:1px solid var(--line);border-radius:16px;padding:14px 13px;box-shadow:0 5px 16px #22352c0d;transition:.16s}
+.region-card:hover{transform:translateY(-2px);border-color:var(--green)}
+.region-card .rnum{font-size:.68rem;font-weight:900;color:var(--muted)}
+.region-card .rname{font-size:.95rem;font-weight:900;margin-top:2px}
+.region-card .rcount{font-size:.78rem;color:var(--accent);font-weight:850;margin-top:4px}
+.region-card .rspots{font-size:.69rem;color:var(--muted);margin-top:5px;line-height:1.45}
+@media(max-width:900px){.region-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.region-grid{grid-template-columns:1fr}}
+
+.illustrated-map-wrap{margin:16px 0 30px}
+.illustrated-map-card{background:white;border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:0 14px 36px #22352c18}
+.illustrated-map-card img{display:block;width:100%;height:auto;border-radius:14px}
+.illustrated-map-caption{text-align:center;color:var(--muted);font-size:.78rem;margin-top:9px}
+
+/* Static illustration map: show full image without cropping */
+#map.illustrated-map-wrap{height:auto !important;min-height:0 !important;overflow:visible !important;border:0 !important;box-shadow:none !important;}
+.illustrated-map-card{overflow:visible !important;}
+.illustrated-map-card img{width:100% !important;height:auto !important;max-height:none !important;object-fit:contain !important;object-position:center top !important;}
+@media(max-width:780px){#map.illustrated-map-wrap{height:auto !important;}}
+@media(max-width:480px){#map.illustrated-map-wrap{height:auto !important;}}
+
+/* ===== 主要寺社20｜9方向カード ===== */
+.temple-study{margin:28px 0 34px}
+.temple-study-head{text-align:center;margin-bottom:16px}
+.temple-study-head h2{margin:0 0 6px;font-size:clamp(24px,4vw,34px)}
+.temple-study-head p{margin:0;color:var(--muted)}
+.temple-panel{background:#f7f3e9;border:1px solid #ddd5c8;border-radius:28px;padding:clamp(16px,3vw,28px);box-shadow:0 12px 30px #22352c12}
+.temple-compass{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:820px;margin:0 auto 22px}
+.temple-cell{background:#fff;border:1px solid #d9d2c7;border-radius:18px;padding:14px 12px;min-height:122px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 4px 12px #22352c0a}
+.temple-cell .tlabel{font-size:.72rem;font-weight:900;color:#7b817e;margin-bottom:6px;letter-spacing:.02em}
+.temple-cell .tvalue{font-size:.92rem;font-weight:800;line-height:1.45;color:var(--ink)}
+.temple-center{background:#4c7867;color:#fff;text-align:center;align-items:center}
+.temple-center .tlabel{color:#eaf4ef}.temple-center .tvalue{color:#fff;font-size:clamp(20px,3vw,28px)}
+.temple-selector-title{text-align:center;font-size:.82rem;color:var(--muted);font-weight:800;margin:8px 0 10px}
+.temple-selector{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.temple-btn{appearance:none;border:1px solid #e0c2b0;background:#f7e5d8;color:#8b3d2c;border-radius:14px;padding:11px 8px;font-weight:900;font-size:.86rem;cursor:pointer;transition:.15s}
+.temple-btn:hover{transform:translateY(-1px);box-shadow:0 4px 10px #22352c12}
+.temple-btn.active{background:#4c7867;color:#fff;border-color:#4c7867}
+.temple-area{font-size:.72rem;font-weight:700;display:block;opacity:.75;margin-top:2px}
+.temple-hint{margin:18px auto 0;max-width:820px;background:#ece8df;border-radius:16px;padding:12px 14px;color:#69756f;font-size:.82rem;text-align:center}
+@media(max-width:760px){.temple-selector{grid-template-columns:repeat(2,1fr)}.temple-compass{gap:8px}.temple-cell{min-height:108px;padding:10px 8px}.temple-cell .tvalue{font-size:.8rem}.temple-cell .tlabel{font-size:.63rem}}
+@media(max-width:430px){.temple-compass{grid-template-columns:1fr 1fr}.temple-center{grid-column:1 / -1;grid-row:1}.temple-cell{min-height:96px}.temple-selector{grid-template-columns:1fr 1fr}}
+
+</style>
+<style id="full-map-image-fix">
+  .map-image-wrap, .illustrated-map-wrap, .illustrated-map-card {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .map-image-wrap img, .illustrated-map-wrap img, .illustrated-map-card img,
+  main img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+</style>
+<style>
+.page-back{max-width:1180px;margin:18px auto 0;padding:0 16px}
+.page-back a{display:inline-block;text-decoration:none;font-weight:800;color:var(--green,#3f6d59);background:white;border:1px solid var(--line,#ddd5c8);padding:8px 13px;border-radius:999px}
+</style>
+</head>
+<body>
+<header>
+<div>⛩️ KAMAKURA KENTEI TEMPLE CARDS</div>
+<h1>主要寺社20<br>1寺社を8方向＋中心で覚える</h1>
+<p class="lead">寺社名を中心に、関連する8つのポイントを結び付けて覚える学習ページです。</p>
+</header>
+
+<div class="page-back" style="display:flex;gap:10px;flex-wrap:wrap">
+  <a href="index.html">📊 学習ガイドTOPへ</a>
+  <a href="map.html">🗺️ 学習エリアマップへ</a>
+</div>
+
+<main>
+<section class="temple-study" id="temple-cards">
+  <div class="temple-study-head"><h2>⛩️ 主要寺社20｜1寺社を8方向＋中心で覚える</h2><p>寺社名をタップすると、宗派・創建・本尊・文化財・人物・景観・行事・伝説を一画面で確認できます。</p></div>
+  <div class="temple-panel">
+    <div class="temple-compass" id="templeCompass">
+      <div class="temple-cell"><div class="tlabel">宗派・種別</div><div class="tvalue" data-k="sect"></div></div>
+      <div class="temple-cell"><div class="tlabel">開山・創建</div><div class="tvalue" data-k="founder"></div></div>
+      <div class="temple-cell"><div class="tlabel">本尊・祭神</div><div class="tvalue" data-k="honzon"></div></div>
+      <div class="temple-cell"><div class="tlabel">文化財・特徴</div><div class="tvalue" data-k="culture"></div></div>
+      <div class="temple-cell temple-center"><div class="tlabel" data-k="area"></div><div class="tvalue" data-k="name"></div></div>
+      <div class="temple-cell"><div class="tlabel">人物・墓</div><div class="tvalue" data-k="person"></div></div>
+      <div class="temple-cell"><div class="tlabel">花・景観</div><div class="tvalue" data-k="nature"></div></div>
+      <div class="temple-cell"><div class="tlabel">祭・行事</div><div class="tvalue" data-k="festival"></div></div>
+      <div class="temple-cell"><div class="tlabel">伝説・キーワード</div><div class="tvalue" data-k="legend"></div></div>
+    </div>
+    <div class="temple-selector-title">寺社名を選ぶ</div>
+    <div class="temple-selector" id="templeSelector"></div>
+    <div class="temple-hint">💡 学習のコツ：寺社名を見たら「宗派 → 人物 → 文化財 → 花・行事」の順で声に出すと、過去問の横断問題に強くなります。</div>
+  </div>
+</section>
+</main>
+<script>
+const templeData = [{"name": "鶴岡八幡宮", "area": "AREA 1 鎌倉駅周辺", "sect": "神社／八幡信仰", "founder": "1063年 源頼義が由比郷に創建。1180年 源頼朝が現在地へ遷座", "honzon": "祭神：応神天皇・比売神・神功皇后", "culture": "若宮・上宮など。武家文化と鎌倉の都市形成を象徴", "person": "源頼朝・北条政子、源実朝ゆかり", "nature": "段葛・源平池・大銀杏で知られる", "festival": "例大祭、流鏑馬神事、除魔神事", "legend": "『八』の字を鳩で表した扁額。鎌倉幕府の守護神"}, {"name": "建長寺", "area": "AREA 2 北鎌倉", "sect": "臨済宗建長寺派 大本山／鎌倉五山第一位", "founder": "開基：北条時頼／開山：蘭渓道隆。1253年創建", "honzon": "地蔵菩薩", "culture": "三門・仏殿・法堂など禅宗伽藍。梵鐘は国宝", "person": "北条時頼・蘭渓道隆", "nature": "方丈庭園・半僧坊からの眺望", "festival": "開山忌など禅寺の法要", "legend": "けんちん汁は建長寺発祥という説で有名"}, {"name": "円覚寺", "area": "AREA 2 北鎌倉", "sect": "臨済宗円覚寺派 大本山／鎌倉五山第二位", "founder": "開基：北条時宗／開山：無学祖元。1282年創建", "honzon": "宝冠釈迦如来", "culture": "舎利殿・洪鐘は国宝", "person": "北条時宗・無学祖元。夏目漱石も参禅", "nature": "紅葉・梅・境内の谷戸景観", "festival": "開山忌、宝物風入など", "legend": "元寇の戦没者を敵味方なく弔うため建立"}, {"name": "長谷寺", "area": "AREA 5 由比ヶ浜・長谷・極楽寺", "sect": "浄土宗系の寺院（海光山慈照院長谷寺）", "founder": "創建は奈良時代と伝わる。開山・開基は伝承色が強い", "honzon": "十一面観世音菩薩", "culture": "巨大な木造十一面観音像で知られる", "person": "観音信仰の霊場として多くの参詣者を集める", "nature": "アジサイ・眺望散策路・由比ヶ浜の景色", "festival": "8月10日の四万六千日など", "legend": "奈良・長谷寺の観音像と同木から造られ海に流されたという伝承"}, {"name": "高徳院", "area": "AREA 5 由比ヶ浜・長谷・極楽寺", "sect": "浄土宗", "founder": "開山・開基は不詳。鎌倉大仏の造立は13世紀", "honzon": "国宝 銅造阿弥陀如来坐像（鎌倉大仏）", "culture": "鎌倉を代表する国宝の大仏", "person": "境内奥に与謝野晶子の歌碑", "nature": "露座の大仏と背後の山並み", "festival": "大仏の法要・関連行事", "legend": "かつて大仏殿があったが災害で失われ、現在は露座"}, {"name": "明月院", "area": "AREA 2 北鎌倉", "sect": "臨済宗建長寺派", "founder": "明月庵は上杉憲方が整備したとされる", "honzon": "聖観世音菩薩", "culture": "北条時頼廟・やぐらなど中世鎌倉の遺構", "person": "北条時頼・上杉憲方ゆかり", "nature": "『あじさい寺』、悟りの窓（丸窓）", "festival": "花の時期の特別公開など", "legend": "境内に『明月院やぐら』。北鎌倉を代表する花寺"}, {"name": "浄智寺", "area": "AREA 2 北鎌倉", "sect": "臨済宗円覚寺派／鎌倉五山第四位", "founder": "1281年、北条宗政の菩提を弔うため創建", "honzon": "阿弥陀・釈迦・弥勒の三世仏", "culture": "鐘楼門・やぐらなど", "person": "北条宗政・北条師時ゆかり", "nature": "竹林・苔・静かな谷戸景観", "festival": "仏教行事・法要", "legend": "布袋尊は鎌倉江の島七福神の一つ"}, {"name": "東慶寺", "area": "AREA 2 北鎌倉", "sect": "臨済宗円覚寺派", "founder": "1285年、覚山尼（北条時宗夫人）が開山", "honzon": "釈迦如来", "culture": "女性救済の歴史を伝える文書・墓所", "person": "覚山尼。歴代尼僧、鈴木大拙らの墓所でも知られる", "nature": "梅・花菖蒲など四季の花", "festival": "仏教行事・法要", "legend": "『縁切寺』『駆込寺』として女性を救済した歴史"}, {"name": "寿福寺", "area": "AREA 1 鎌倉駅周辺", "sect": "臨済宗建長寺派／鎌倉五山第三位", "founder": "1200年、北条政子が開基／栄西が開山", "honzon": "釈迦如来", "culture": "中世禅宗寺院の境内・参道", "person": "源実朝・北条政子の墓と伝わるやぐら", "nature": "桂敷きの参道と静かな扇ガ谷", "festival": "通常は境内奥非公開、特別参拝時期あり", "legend": "源頼朝の父・義朝の旧邸跡に建てられたと伝わる"}, {"name": "浄妙寺", "area": "AREA 3 二階堂・浄明寺・十二所", "sect": "臨済宗建長寺派／鎌倉五山第五位", "founder": "1188年、足利義兼が開基／退耕行勇が開山", "honzon": "釈迦如来", "culture": "鎌倉五山の一寺。枯山水庭園も見どころ", "person": "足利義兼ゆかり", "nature": "庭園・梅・境内高台", "festival": "仏教行事・法要", "legend": "創建当初は密教系の『極楽寺』とされ、後に禅宗寺院へ"}, {"name": "報国寺", "area": "AREA 3 二階堂・浄明寺・十二所", "sect": "臨済宗建長寺派", "founder": "1334年、天岸慧広が開山。足利家時開基と伝わる", "honzon": "釈迦如来", "culture": "足利氏ゆかりの寺。五輪塔群など", "person": "足利家時・足利氏ゆかり", "nature": "約2,000本の孟宗竹で知られる竹の庭", "festival": "仏教行事・法要", "legend": "『竹寺』の愛称。抹茶と竹林景観で有名"}, {"name": "杉本寺", "area": "AREA 3 二階堂・浄明寺・十二所", "sect": "天台宗", "founder": "734年、行基が開山したと伝わる", "honzon": "三体の十一面観世音菩薩", "culture": "坂東三十三観音第一番札所。茅葺の本堂", "person": "行基・慈覚大師円仁・恵心僧都ゆかりの伝承", "nature": "苔むした石段が象徴的", "festival": "8月10日の四万六千日など", "legend": "鎌倉最古の寺とされる。『下馬観音』の伝承"}, {"name": "瑞泉寺", "area": "AREA 3 二階堂・浄明寺・十二所", "sect": "臨済宗円覚寺派", "founder": "1327年、二階堂道蘊が開基／夢窓疎石が開山", "honzon": "釈迦如来", "culture": "夢窓疎石作と伝わる庭園は国指定名勝", "person": "夢窓疎石。鎌倉公方ゆかり", "nature": "梅・紅葉・岩庭。『花の寺』", "festival": "仏教行事・法要", "legend": "鎌倉公方の菩提寺として栄えた"}, {"name": "覚園寺", "area": "AREA 3 二階堂・浄明寺・十二所", "sect": "真言宗泉涌寺派", "founder": "北条義時の薬師堂を起源とし、1296年に北条貞時が寺院として整備", "honzon": "薬師如来", "culture": "薬師堂と仏像群。鎌倉時代の信仰空間を色濃く残す", "person": "北条義時・北条貞時ゆかり", "nature": "谷戸奥の静かな境内", "festival": "黒地蔵縁日（8月10日）で知られる", "legend": "北条義時が夢告を受け薬師堂を建立したという伝承"}, {"name": "光明寺", "area": "AREA 4 大町・材木座", "sect": "浄土宗 大本山", "founder": "1243年、北条経時が開基／然阿良忠が開山", "honzon": "阿弥陀如来", "culture": "大殿・山門、浄土庭園。関東の浄土宗の中心寺院", "person": "北条経時・然阿良忠ゆかり", "nature": "材木座海岸近く。蓮の庭園", "festival": "十夜法要で著名", "legend": "鎌倉最大級の山門を持つ寺として親しまれる"}, {"name": "妙本寺", "area": "AREA 4 大町・材木座", "sect": "日蓮宗", "founder": "比企能本が開基／日蓮が開山とされる", "honzon": "三宝尊", "culture": "比企一族の屋敷跡・祖師堂など", "person": "比企能員一族・比企能本・日蓮ゆかり", "nature": "比企谷の深い緑、海棠の花", "festival": "日蓮宗の法要・行事", "legend": "比企一族の滅亡地に建つ。比企谷の名と結びつけて覚える"}, {"name": "安国論寺", "area": "AREA 4 大町・材木座", "sect": "日蓮宗", "founder": "日蓮が松葉ヶ谷に草庵を結んだ霊跡とされる", "honzon": "釈迦如来", "culture": "日蓮ゆかりの御小庵・洞窟など", "person": "日蓮", "nature": "富士見台・境内の花木", "festival": "日蓮宗の法要・行事", "legend": "『立正安国論』を著した地の一つと伝わる。松葉ヶ谷法難ゆかり"}, {"name": "極楽寺", "area": "AREA 5 由比ヶ浜・長谷・極楽寺", "sect": "真言律宗", "founder": "北条重時が創建を発願／忍性が開山。13世紀", "honzon": "釈迦如来", "culture": "忍性の社会救済活動と結びつく寺院", "person": "忍性・北条重時ゆかり", "nature": "山門・桜・静かな谷戸", "festival": "仏教行事・法要", "legend": "病人・貧者救済など中世の福祉活動の拠点として知られる"}, {"name": "荏柄天神社", "area": "AREA 1 鎌倉駅周辺", "sect": "神社／天神信仰", "founder": "1104年創建と伝わる。源頼朝が幕府の鬼門守護とした", "honzon": "祭神：菅原道真", "culture": "社殿・古木、学問信仰の社", "person": "菅原道真・源頼朝ゆかり", "nature": "大銀杏・梅", "festival": "初天神、針供養など", "legend": "大宰府・北野と並ぶ『三古天神』の一つとされる"}, {"name": "銭洗弁財天宇賀福神社", "area": "AREA 1 鎌倉駅周辺", "sect": "神社／弁財天・宇賀神信仰", "founder": "源頼朝が巳の年・巳の月・巳の日の夢告で創建したと伝わる", "honzon": "祭神：市杵島姫命。奥宮に弁財天・宇賀神信仰", "culture": "岩窟内の奥宮と霊水", "person": "源頼朝・北条時頼ゆかりの伝承", "nature": "佐助の谷戸、洞窟と湧水", "festival": "巳の日に参拝者が多い", "legend": "銭を霊水で洗うと何倍にも増えて戻るという『銭洗い』信仰"}];
+(function(){
+  const selector=document.getElementById('templeSelector');
+  const compass=document.getElementById('templeCompass');
+  if(!selector||!compass) return;
+  function showTemple(i){
+    const d=templeData[i];
+    compass.querySelectorAll('[data-k]').forEach(el=>{el.textContent=d[el.dataset.k]||'—';});
+    selector.querySelectorAll('.temple-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  }
+  templeData.forEach((d,i)=>{
+    const b=document.createElement('button'); b.className='temple-btn'; b.type='button';
+    b.innerHTML=d.name+'<span class="temple-area">'+d.area.replace(/^AREA \d+ /,'')+'</span>';
+    b.addEventListener('click',()=>showTemple(i)); selector.appendChild(b);
+  });
+  showTemple(0);
+})();
+</script>
+</body>
+</html>
